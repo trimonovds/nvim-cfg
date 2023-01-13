@@ -105,7 +105,6 @@ vim.o.backup = false
 vim.o.undodir = vim.fn.stdpath "cache" .. "/undo"
 vim.o.undofile = true
 
-
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -433,23 +432,10 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-local diagnostic_signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
-}
-
-for _, sign in ipairs(diagnostic_signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
-
 vim.diagnostic.config({
-  virtual_text = false,
-  underline = true,
-  signs = {
-    active = diagnostic_signs, -- show signs
-  },
+  virtual_text = true,
+  underline = false,
+  signs = false
 })
 
 -- Turn on lsp status information
@@ -468,7 +454,7 @@ cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-Space>'] = cmp.mapping.complete({}),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -497,6 +483,5 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
