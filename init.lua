@@ -113,19 +113,29 @@ vim.o.undofile = true
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Modes
+--   normal_mode = "n",
+--   insert_mode = "i",
+--   visual_mode = "v",
+--   visual_block_mode = "x",
+--   term_mode = "t",
+--   command_mode = "c",
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Center screen on pagination and search results jumps
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- Convenient copy/paste/delete 
+vim.keymap.set({ 'n', 'v' }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>yy", [["+yy]])
+vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 -- Buffers
 vim.keymap.set("n", "<leader>bn", ":bn<cr>")
@@ -137,9 +147,6 @@ vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<cr>")
 
 -- Press jk fast to exit insert mode
 vim.keymap.set("i", "jk", "<ESC>")
-
--- Better paste
-vim.keymap.set("v", "p", '"_dP')
 
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv")
