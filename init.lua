@@ -250,6 +250,7 @@ vim.keymap.set('n', '<leader>sf', ':Files<CR>', { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sg', ':Rg<CR>', { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader><space>', ':Buffers<CR>', { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', ':BLines<CR>', { desc = '[/] Fuzzily search in current buffer]' })
+vim.keymap.set('n', '<leader>?', ':History<CR>', { desc = '[?] Find recently opened files' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
