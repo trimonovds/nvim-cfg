@@ -248,11 +248,13 @@ require('gitsigns').setup {
   end
 }
 
-vim.keymap.set('n', '<leader>sf', "<cmd>lua require('fzf-lua').files()<CR>", { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sg', "<cmd>lua require('fzf-lua').live_grep()<CR>", { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>?', "<cmd>lua require('fzf-lua').oldfiles()<CR>", { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', "<cmd>lua require('fzf-lua').buffers()<CR>", { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', "<cmd>lua require('fzf-lua').grep_curbuf()<CR>", { desc = '[/] Fuzzily search in current buffer]' })
-vim.keymap.set('n', '<leader>?', "<cmd>lua require('fzf-lua').oldfiles()<CR>", { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>sf', "<cmd>lua require('fzf-lua').files()<CR>", { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sh', "<cmd>lua require('fzf-lua').help_tags()<CR>", { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sw', "<cmd>lua require('fzf-lua').grep_cword()<CR>", { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>sg', "<cmd>lua require('fzf-lua').live_grep_native()<CR>", { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', "<cmd>lua require('fzf-lua').diagnostics_workspace()<CR>", { desc = '[S]earch [D]iagnostics' })
 
 -- Diagnostic keymaps
