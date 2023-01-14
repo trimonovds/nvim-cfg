@@ -84,26 +84,27 @@ end
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
-vim.wo.number = true
-vim.wo.relativenumber = true
-vim.wo.signcolumn = 'yes'
-vim.wo.colorcolumn = '80'
-vim.o.hlsearch = false
-vim.o.guicursor = ''
-vim.o.cursorline = true
-vim.o.mouse = 'a'
-vim.o.scrolloff = 8
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.breakindent = true
-vim.o.smartindent = true
-vim.o.updatetime = 250
-vim.o.termguicolors = true
-vim.o.completeopt = 'menuone,noselect'
-vim.o.swapfile = false
-vim.o.backup = false
-vim.o.undodir = vim.fn.stdpath "cache" .. "/undo"
-vim.o.undofile = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.signcolumn = 'yes'
+vim.opt.colorcolumn = '80'
+vim.opt.hlsearch = false
+vim.opt.guicursor = ''
+vim.opt.cursorline = true
+vim.opt.mouse = 'a'
+vim.opt.scrolloff = 8
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.breakindent = true
+vim.opt.smartindent = true
+vim.opt.updatetime = 250
+vim.opt.termguicolors = true
+vim.opt.completeopt = 'menuone,noselect'
+vim.opt.wrap = false
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
+vim.opt.undofile = true
 
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
