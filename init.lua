@@ -27,8 +27,8 @@ require('packer').startup(function(use)
   }
 
   -- FZF
-  use 'junegunn/fzf'
-  use 'junegunn/fzf.vim'
+  use { 'junegunn/fzf', run = './install --bin' }
+  use { 'ibhagwan/fzf-lua' }
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -54,7 +54,10 @@ require('packer').startup(function(use)
   -- Git related plugins
   use 'lewis6991/gitsigns.nvim'
 
-  use 'ellisonleao/gruvbox.nvim' -- Theme
+  -- Themes
+  use 'ellisonleao/gruvbox.nvim'
+  use 'navarasu/onedark.nvim'
+
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -246,11 +249,11 @@ require('gitsigns').setup {
   end
 }
 
-vim.keymap.set('n', '<leader>sf', ':Files<CR>', { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sg', ':Rg<CR>', { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader><space>', ':Buffers<CR>', { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', ':BLines<CR>', { desc = '[/] Fuzzily search in current buffer]' })
-vim.keymap.set('n', '<leader>?', ':History<CR>', { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>sf', "<cmd>lua require('fzf-lua').files()<CR>", { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sg', "<cmd>lua require('fzf-lua').grep_project()<CR>", { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader><space>', "<cmd>lua require('fzf-lua').buffers()<CR>", { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>/', "<cmd>lua require('fzf-lua').grep_curbuf()<CR>", { desc = '[/] Fuzzily search in current buffer]' })
+vim.keymap.set('n', '<leader>?', "<cmd>lua require('fzf-lua').oldfiles()<CR>", { desc = '[?] Find recently opened files' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
