@@ -250,10 +250,17 @@ require('gitsigns').setup {
 }
 
 vim.keymap.set('n', '<leader>sf', "<cmd>lua require('fzf-lua').files()<CR>", { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sg', "<cmd>lua require('fzf-lua').grep_project()<CR>", { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sg', "<cmd>lua require('fzf-lua').live_grep()<CR>", { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader><space>', "<cmd>lua require('fzf-lua').buffers()<CR>", { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', "<cmd>lua require('fzf-lua').grep_curbuf()<CR>", { desc = '[/] Fuzzily search in current buffer]' })
 vim.keymap.set('n', '<leader>?', "<cmd>lua require('fzf-lua').oldfiles()<CR>", { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>sd', "<cmd>lua require('fzf-lua').diagnostics_workspace()<CR>", { desc = '[S]earch [D]iagnostics' })
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -318,11 +325,6 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -344,11 +346,11 @@ local on_attach = function(_, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
+  nmap('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-  nmap('<leader>ds', vim.lsp.buf.document_symbol, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', vim.lsp.buf.workspace_symbol, '[W]orkspace [S]ymbols')
+  nmap('<leader>ds', require('fzf-lua').lsp_document_symbols, '[D]ocument [S]ymbols')
+  nmap('<leader>ws', require('fzf-lua').lsp_workspace_symbols, '[W]orkspace [S]ymbols')
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
