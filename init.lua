@@ -56,7 +56,6 @@ require('packer').startup(function(use)
 
   -- Themes
   use 'ellisonleao/gruvbox.nvim'
-  use 'navarasu/onedark.nvim'
 
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
