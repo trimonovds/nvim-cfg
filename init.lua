@@ -440,6 +440,11 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+require('lspconfig')["sourcekit"].setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 vim.diagnostic.config({
   virtual_text = true,
   underline = false,
