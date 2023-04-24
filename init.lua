@@ -293,7 +293,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vim', 'swift' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -405,12 +405,6 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   rust_analyzer = {},
-  sumneko_lua = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
 }
 
 -- Setup neovim lua configuration
